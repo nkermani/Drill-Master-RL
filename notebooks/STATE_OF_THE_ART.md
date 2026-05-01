@@ -1,7 +1,7 @@
 # State of the Art: Multi-Agent Reinforcement Learning for Robot Fleet Management
 
-> **Author**: Nathan Kermani  
-> **Project**: N-Drill-Master-RL  
+> **Author**: Nathan Kermani
+> **Project**: N-Drill-Master-RL
 > **Date**: April 2026
 
 ---
