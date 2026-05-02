@@ -2,6 +2,7 @@
 
 """Forward method for GNNEncoder"""
 
+import torch
 import torch.nn.functional as F
 from typing import Optional, Tuple
 
@@ -16,8 +17,7 @@ def forward(
     x = self.node_encoder(node_features)
 
     for i in range(self.num_layers):
-        x_new = self.gat_convs[i](x, edge_index)
-        x_new = self.norms[i](x_new)
+        x_new = self.hidden_layers(x)
         x_new = F.relu(x_new)
         x = x_new + x
 

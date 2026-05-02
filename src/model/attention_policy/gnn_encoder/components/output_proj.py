@@ -2,6 +2,7 @@
 
 """Output projection component"""
 
+import torch
 import torch.nn as nn
 
 

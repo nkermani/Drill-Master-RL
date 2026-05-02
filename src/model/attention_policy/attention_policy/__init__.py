@@ -9,7 +9,9 @@ from typing import Optional, Tuple
 
 from ..gnn_encoder import GNNEncoder
 from .components import PolicyHead, ValueHead
-from .methods import forward, create_state_pairs, get_action
+from .methods.forward import forward
+from .methods.create_state_pairs import _create_state_pairs
+from .methods.get_action import get_action
 
 
 class AttentionPolicy(nn.Module):
@@ -38,7 +40,7 @@ class AttentionPolicy(nn.Module):
         self.value_head = ValueHead(hidden_dim)
 
     forward = forward
-    _create_state_pairs = create_state_pairs
+    _create_state_pairs = _create_state_pairs
     get_action = get_action
 
 

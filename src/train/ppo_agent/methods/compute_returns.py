@@ -2,6 +2,8 @@
 
 """Compute returns method for PPOAgent"""
 
+import torch
+
 
 def compute_returns(
     self,
@@ -10,19 +12,16 @@ def compute_returns(
     values: torch.Tensor,
     next_values: torch.Tensor
 ) -> tuple:
+    returns = torch.zeros_like(rewards)
     advantages = torch.zeros_like(rewards)
 
-    gae = 0
     for t in reversed(range(rewards.shape[0])):
         if t == rewards.shape[0] - 1:
-            next_value = 0
+            next_val = torch.zeros_like(values[0])
         else:
-            next_value = next_values[t]
+            next_val = values[t + 1]
 
-        delta = rewards[t] + self.gamma * next_value * (1 - dones[t].float()) - values[t]
-        gae = delta + self.gamma * self.lam * (1 - dones[t].float()) * gae
-        advantages[t] = gae
-
-    returns = advantages + values
+        returns[t] = rewards[t] + self.gamma * next_val * (1 - dones[t].float())
+        advantages[t] = returns[t] - values[t]
 
     return returns, advantages

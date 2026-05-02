@@ -5,10 +5,9 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch_geometric.nn import GATConv, global_mean_pool
 from typing import Optional, Tuple
 
-from .components import NodeEncoder, EdgeEncoder, GATConvs, OutputProj
+from .components import NodeEncoder, OutputProj
 from .forward import forward as forward_fn
 
 
@@ -30,11 +29,11 @@ class GNNEncoder(nn.Module):
         self.num_layers = num_layers
 
         self.node_encoder = NodeEncoder(node_input_dim, hidden_dim, dropout)
-        self.edge_encoder = EdgeEncoder(edge_input_dim, hidden_dim)
-
-        self.gat_convs = GATConvs(hidden_dim, num_layers, num_heads, dropout)
-        self.norms = nn.ModuleList([nn.LayerNorm(hidden_dim) for _ in range(num_layers)])
-
+        self.hidden_layers = nn.Sequential(
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, hidden_dim)
+        )
         self.output_proj = OutputProj(hidden_dim)
 
     forward = forward_fn

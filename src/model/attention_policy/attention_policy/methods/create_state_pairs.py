@@ -6,18 +6,16 @@ import torch
 
 
 def _create_state_pairs(self, embeddings: torch.Tensor) -> torch.Tensor:
-    num_agents = embeddings.shape[0]
-
-    agent_idx = torch.arange(num_agents, device=embeddings.device)
-    agent_idx_1 = agent_idx.unsqueeze(1).expand(num_agents, num_agents)
-    agent_idx_2 = agent_idx.unsqueeze(0).expand(num_agents, num_agents)
-
-    emb1 = embeddings[agent_idx_1.reshape(-1)]
-    emb2 = embeddings[agent_idx_2.reshape(-1)]
-
-    state_pairs = torch.cat([emb1, emb2], dim=-1).reshape(num_agents, num_agents, -1)
-
-    max_pairs = state_pairs.size(1)
-    state_pairs = state_pairs[:, :max_pairs, :].mean(dim=1)
-
-    return state_pairs
+    if embeddings.dim() == 3:
+        batch_size, num_agents, hidden_dim = embeddings.shape
+        embeddings = embeddings.reshape(-1, hidden_dim)
+    
+    if embeddings.dim() == 2:
+        num_agents = embeddings.shape[0]
+        hidden_dim = embeddings.shape[1]
+        
+        mean_embedding = embeddings.mean(dim=0, keepdim=True).expand(num_agents, -1)
+        state_pairs = torch.cat([embeddings, mean_embedding], dim=-1)
+        return state_pairs
+    
+    return embeddings

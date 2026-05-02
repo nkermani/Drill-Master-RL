@@ -1,10 +1,8 @@
-# src/__init__.py
-
 """N-Drill-Master-RL Package Initialization"""
 
-from .warehouse import WarehouseEnv, Robot, Task
-from .attention_policy import GNNEncoder, AttentionPolicy
-from .qmix import MixingNetwork, QMIX, ReplayBuffer
+from .env.warehouse import WarehouseEnv, Robot, Task
+from .model.attention_policy import GNNEncoder, AttentionPolicy
+from .model.qmix import MixingNetwork, QMIX, ReplayBuffer
 from .train import Trainer, PPOAgent
 
 __all__ = [

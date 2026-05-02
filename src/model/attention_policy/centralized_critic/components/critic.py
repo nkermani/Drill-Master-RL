@@ -2,6 +2,7 @@
 
 """Critic component for CentralizedCritic"""
 
+import torch
 import torch.nn as nn
 
 

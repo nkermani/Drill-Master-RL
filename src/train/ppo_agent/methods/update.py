@@ -17,16 +17,12 @@ def update(
 
     action_probs, values = self.policy(obs_batch, torch.zeros(obs_batch.shape[1], 2, dtype=torch.long))
 
-    _, next_values = self.policy(next_obs_batch, torch.zeros(obs_batch.shape[1], 2, dtype=torch.long))
+    returns = rewards_batch.view(-1)
 
-    returns, advantages = self.compute_returns(
-        rewards_batch, dones_batch, values, next_values.detach()
-    )
-
-    advantages = (advantages - advantages.mean()) / (advantages.std() + 1e-8)
+    advantages = returns - values.detach()
 
     dist = torch.distributions.Categorical(action_probs)
-    log_probs = dist.log_prob(actions_batch)
+    log_probs = dist.log_prob(actions_batch.view(-1))
 
     entropy = dist.entropy().mean()
 

@@ -1,8 +1,6 @@
-# visualization/create_plots/methods/plot_training_progress.py
-
-"""Plot training progress"""
-
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
 import matplotlib.pyplot as plt
 
 
@@ -15,16 +13,17 @@ def plot_training_progress():
     base = 50
     for i in range(episodes):
         noise = np.random.randn() * 20
-        progress = (1 - np.exp(-i/300)) * 150
+        progress = (1 - np.exp(-i / 300)) * 150
         rewards.append(base + progress + noise)
 
     fig, axes = plt.subplots(1, 2, figsize=(12, 4))
 
     window = 50
-    smoothed = np.convolve(rewards, np.ones(window)/window, mode='valid')
+    smoothed = np.convolve(rewards, np.ones(window) / window, mode='valid')
 
     axes[0].plot(rewards, alpha=0.3, color='blue', label='Episode')
-    axes[0].plot(range(window-1, len(rewards)), smoothed, color='blue', linewidth=2, label='Moving Avg')
+    x_vals = list(range(window - 1, len(rewards)))
+    axes[0].plot(x_vals, smoothed, color='blue', linewidth=2, label='Moving Avg')
     axes[0].set_xlabel('Episode')
     axes[0].set_ylabel('Total Reward')
     axes[0].set_title('Training Reward Curve')

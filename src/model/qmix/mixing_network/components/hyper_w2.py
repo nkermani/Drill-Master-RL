@@ -2,6 +2,7 @@
 
 """Hyper network w2 component"""
 
+import torch
 import torch.nn as nn
 
 

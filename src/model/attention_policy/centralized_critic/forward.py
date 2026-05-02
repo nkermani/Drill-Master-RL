@@ -2,6 +2,7 @@
 
 """Forward method for CentralizedCritic"""
 
+import torch
 import torch.nn.functional as F
 from typing import Optional
 

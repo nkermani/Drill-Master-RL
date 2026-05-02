@@ -39,7 +39,7 @@ def visualize_warehouse(env, save_path=None):
     ax.set_xticks(range(env.grid_size[1]))
     ax.set_yticks(range(env.grid_size[0]))
     ax.set_xticklabels(range(env.grid_size[1]))
-    ax.set_yticklabels(list(range(env.grid_size[0], reversed(range(env.grid_size[0])))
+    ax.set_yticklabels(list(range(env.grid_size[0]))[::-1])
     ax.set_xlabel('Column')
     ax.set_ylabel('Row')
     ax.set_title(f'Warehouse - Step {env.current_step}')

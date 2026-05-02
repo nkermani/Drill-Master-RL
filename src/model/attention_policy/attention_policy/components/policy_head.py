@@ -2,6 +2,7 @@
 
 """Policy head component"""
 
+import torch
 import torch.nn as nn
 
 

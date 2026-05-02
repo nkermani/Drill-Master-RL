@@ -2,6 +2,7 @@
 
 """Forward method for MixingNetwork"""
 
+import torch
 import torch.nn.functional as F
 
 

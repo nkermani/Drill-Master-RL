@@ -2,6 +2,8 @@
 
 """Allocate method for ReplayBuffer"""
 
+import numpy as np
+
 
 def _allocate(self, batch_size: int):
     if self.obs is None:
