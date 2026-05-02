@@ -1,4 +1,4 @@
-# visualization/create_plots/methods/plot_robot_performance.py
+# visualization_scripts/create_plots/methods/plot_robot_performance.py
 
 """Plot robot performance"""
 

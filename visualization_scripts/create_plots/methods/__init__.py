@@ -1,4 +1,4 @@
-# visualization/create_plots/methods/__init__.py
+# visualization_scripts/create_plots/methods/__init__.py
 
 from .create_sample_plots import create_sample_plots
 from .plot_training_progress import plot_training_progress

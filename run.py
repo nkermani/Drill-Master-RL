@@ -1,3 +1,5 @@
+# run.py
+
 #!/usr/bin/env python3
 """
 Run script for N-Drill-Master-RL
@@ -78,7 +80,7 @@ def generate_visuals(env=None):
     os.makedirs('visualizations', exist_ok=True)
 
     try:
-        from visualization.create_plots.methods.create_sample_plots import create_sample_plots
+        from visualization_scripts.create_plots.methods.create_sample_plots import create_sample_plots
         create_sample_plots()
         print("✓ Sample plots created in visualizations/")
     except Exception as e:
@@ -86,7 +88,7 @@ def generate_visuals(env=None):
 
     if env:
         try:
-            from visualization.visualize.methods.visualize_warehouse import visualize_warehouse
+            from visualization_scripts.visualize.methods.visualize_warehouse import visualize_warehouse
             visualize_warehouse(env, save_path='visualizations/warehouse_env.png')
             print("✓ Warehouse visualization saved")
         except Exception as e:

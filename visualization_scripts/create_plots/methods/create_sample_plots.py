@@ -1,4 +1,4 @@
-# visualization/create_plots/methods/create_sample_plots.py
+# visualization_scripts/create_plots/methods/create_sample_plots.py
 
 """Create sample plots entry point"""
 

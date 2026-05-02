@@ -1,4 +1,4 @@
-# visualization/create_plots/methods/plot_warehouse_layout.py
+# visualization_scripts/create_plots/methods/plot_warehouse_layout.py
 
 """Plot warehouse layout"""
 

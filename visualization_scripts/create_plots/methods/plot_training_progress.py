@@ -1,3 +1,5 @@
+# visualization_scripts/create_plots/methods/plot_training_progress.py
+
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend

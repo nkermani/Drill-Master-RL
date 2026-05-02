@@ -1,4 +1,4 @@
-# visualization/create_plots/__init__.py
+# visualization_scripts/create_plots/__init__.py
 
 """Generate sample visualizations for N-Drill-Master-RL"""
 

@@ -1,4 +1,4 @@
-# visualization/create_plots/methods/plot_gnn_attention.py
+# visualization_scripts/create_plots/methods/plot_gnn_attention.py
 
 """Plot GNN attention"""
 
