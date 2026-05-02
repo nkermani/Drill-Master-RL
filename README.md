@@ -16,6 +16,28 @@ N-Drill-Master-RL implements deep reinforcement learning solutions for multi-rob
 
 ## Installation
 
+### Quick Setup with Nix
+
+This project uses Nix for reproducible environment management. To get started:
+
+```bash
+git clone https://github.com/nkermani/N-Drill-Master-RL.git
+cd N-Drill-Master-RL
+
+# Enter the Nix shell (automatically creates venv and installs dependencies)
+nix-shell
+
+# The shell will:
+# 1. Create a Python 3.11 virtual environment in .venv/
+# 2. Install PyTorch and all requirements
+# 3. Activate the environment
+#
+# To exit: deactivate
+# To re-enter: nix-shell
+```
+
+### Manual Installation (without Nix)
+
 ```bash
 git clone https://github.com/nkermani/N-Drill-Master-RL.git
 cd N-Drill-Master-RL
@@ -30,7 +52,22 @@ pip install -r requirements.txt
 
 ## Quick Start
 
-### 1. Create a Warehouse Environment
+### 1. Quick Start with Nix
+
+After entering the nix-shell (see Installation above):
+
+```bash
+# Run the complete pipeline: environment test, visualization, and training
+python run.py
+```
+
+This will:
+- Test all imports (PyTorch, Gymnasium, Matplotlib)
+- Create the warehouse environment
+- Generate visualization plots in `visualizations/`
+- Train the RL model for 100 updates
+
+### 2. Create a Warehouse Environment
 
 ```python
 from src.env import WarehouseEnv
@@ -155,12 +192,14 @@ N-Drill-Master-RL/
 ## Running Tests
 
 ```bash
+# Inside nix-shell
 pytest tests/ -v
 ```
 
 ## Visualization
 
 ```bash
+# Inside nix-shell
 python -c "
 from src.train import visualize_training
 history = {'policy_loss': [0.5], 'value_loss': [0.3], 'entropy': [1.2], 'total_reward': [100]}
@@ -168,19 +207,19 @@ visualize_training(history, save_path='training_curves.png')
 "
 ```
 
-## Connection to NAVER LABS Europe
+## Complete Pipeline
 
-This project directly implements concepts from the Neural Combinatorial Optimization research track:
-- Reinforcement Learning for multi-agent systems
-- Learning-augmented optimization
-- Decision-making under uncertainty
-- Graph neural networks for coordination
+```bash
+# Enter nix-shell (first time: creates venv and installs everything)
+nix-shell
 
-**Citation**
+# Run everything: test environment, create visuals, train model
+python run.py
 
-If you use N-Drill-Master-RL in your research:
-
-> Kermani, N. (2026). N-Drill-Master-RL: Reinforcement Learning for Multi-Robot Fleet Navigation. Deep RL Research.
+# Exit when done
+deactivate
+# Re-enter anytime with: nix-shell
+```
 
 ---
 
