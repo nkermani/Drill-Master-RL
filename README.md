@@ -38,15 +38,45 @@ nix-shell
 
 ### Manual Installation (without Nix)
 
+### Quick Setup with Nix
+
+This project uses Nix for reproducible environment management. To get started:
+
 ```bash
 git clone https://github.com/nkermani/N-Drill-Master-RL.git
 cd N-Drill-Master-RL
-pip install -r requirements.txt
+
+# Enter the Nix shell (automatically creates venv and installs dependencies)
+nix-shell
+
+# The shell will:
+# 1. Create a Python 3.11 virtual environment in .venv/
+# 2. Install PyTorch and all requirements
+# 3. Activate the environment
+#
+# To exit: deactivate
+# To re-enter: nix-shell
+```
+
+### Manual Installation (without Nix)
+
+### Option 1: Nix (Recommended)
+If you have Nix installed, simply run:
+```bash
+nix-shell  # or: nix-shell shell.nix
+```
+This provides all dependencies automatically.
+
+### Option 2: Pip
+```bash
+git clone https://github.com/nkermani/N-Drill-Master-RL.git
+cd N-Drill-Master-RL
+pip install -e .  # Editable install
 ```
 
 **Dependencies:**
-- PyTorch >= 2.0
-- PyTorch Geometric >= 2.3
+- PyTorch >= 2.0 (optional, for model training)
+- PyTorch Geometric >= 2.3 (optional, for model training)
 - Gymnasium >= 0.29
 - NumPy, Pandas, Matplotlib
 
@@ -70,7 +100,7 @@ This will:
 ### 2. Create a Warehouse Environment
 
 ```python
-from src.env import WarehouseEnv
+from src.warehouse_env import WarehouseEnv
 
 env = WarehouseEnv(
     num_robots=10,
@@ -145,7 +175,7 @@ N-Drill-Master-RL/
 ├── data/                   # Generated datasets
 ├── notebooks/              # Exploratory analysis
 ├── src/
-│   ├── env/               # Multi-agent environment
+│   ├── warehouse_env/               # Multi-agent environment
 │   │   ├── warehouse.py   # Warehouse environment
 │   │   └── __init__.py
 │   ├── model/             # RL and GNN models
