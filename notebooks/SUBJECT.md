@@ -4,7 +4,7 @@
 
 ## Overview
 
-N-Drill-Master-RL is a research-oriented project exploring the intersection of Deep Reinforcement Learning (Deep RL) and Multi-Agent Systems for robot fleet management. Inspired by the challenges at NAVER LABS Europe on Neural Combinatorial Optimization for Robot Fleet Management, this project implements RL-based solutions for pick-up and delivery services involving robot fleets moving in dynamic, uncertain environments.
+N-Drill-Master-RL is a research-oriented project exploring the intersection of Deep Reinforcement Learning (Deep RL) and Multi-Agent Systems for robot fleet management. This project implements RL-based solutions for pick-up and delivery services involving robot fleets moving in dynamic, uncertain environments.
 
 The project simulates a fleet of warehouse robots navigating a grid-based facility with:
 - **Dynamic task arrivals**: Pick-up and delivery requests appear over time
@@ -88,9 +88,6 @@ N-Drill-Master-RL/
 └── README.md
 ```
 
-## Connection to NAVER LABS Europe
-
-This project directly implements the research track described in the NAVER LABS Europe internship:
 - Reinforcement Learning and planning
 - Multi-agent systems under uncertainty
 - Learning-augmented optimization
